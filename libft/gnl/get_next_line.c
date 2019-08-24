@@ -6,36 +6,34 @@
 /*   By: elhampto <elhampto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/10 14:34:44 by elhampto          #+#    #+#             */
-/*   Updated: 2019/08/12 22:13:48 by elhampto         ###   ########.fr       */
+/*   Updated: 2019/08/24 05:30:33 by elhampto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "libft.h"
 
-static char			*line_new(char *str, char c)
+static char			*line_print(char *str)
 {
-	int				i;
+	int				j;
+	char			*tmp;
 
-	i = -1;
-	if (!str || !c)
-		return (0);
-	while (str[++i] != c && str[i] != '\0')
-		if (str[i] == c)
-			break ;
-	str = ft_strsub(str, str[0], i);
-	return (str);
+	j = 0;
+	while (str && str[j] != '\0' && str[j] != '\n')
+		j++;
+	tmp = ft_strsub(str, 0, j);
+	return (tmp);
 }
 
 char				*new_str(char *str, char *sss)
 {
-	if ((ft_strchr(str, '\n')))
+	if (str && (ft_strchr(str, '\n')))
 	{
 		sss = ft_strchr(str, '\n') + 1;
 		sss = ft_strdup(sss);
 		free(str);
 		str = sss;
 	}
-	else if ((ft_strchr(str, '\0')))
+	else if (str && (ft_strchr(str, '\0')))
 	{
 		sss = ft_strchr(str, '\0');
 		sss = ft_strdup(sss);
@@ -47,29 +45,27 @@ char				*new_str(char *str, char *sss)
 
 int					get_next_line(const int fd, char **line)
 {
-	char			buf[BUFF_SIZE + 1];
+	char			buffer[BUFF_SIZE + 1];
 	static char		*str[MAX_FD];
 	char			*tmp;
-	int				i;
+	int				j;
 
-	i = 0;
-	RETY(fd < 0 || line == NULL, -1);
-	if (!str[fd])
-		str[fd] = ft_strnew(BUFF_SIZE);
-	while ((i = read(fd, buf, BUFF_SIZE)) > 0)
+	j = 0;
+	ft_bzero(buffer, BUFF_SIZE);
+	RETY(fd < 0 || line == NULL || fd >= MAX_FD || read(fd, buffer, 0) < 0, -1);
+	while ((j = read(fd, buffer, BUFF_SIZE)) > 0)
 	{
-		ft_bzero(buf, BUFF_SIZE);
-		buf[i] = '\0';
-		tmp = ft_strjoin(str[fd], buf);
-		if ((ft_strchr(tmp, '\n')))
-		{
-			*line = line_new(tmp, '\n');
-			str[fd] = new_str(str[fd], tmp);
-		}
-		else
-			ft_strcpy(str[fd], tmp);
-		free(tmp);
+		if (!str[fd])
+			str[fd] = ft_strnew(BUFF_SIZE);
+		buffer[j] = '\0';
+		tmp = ft_strjoin(str[fd], buffer);
+		free(str[fd]);
+		str[fd] = tmp;
+		ft_bzero(buffer, BUFF_SIZE);
 	}
-	RETY(*str[fd] == '\0', i);
+	RETY(str[fd] && *str[fd] == '\0', j);
+	*line = line_print(str[fd]);
+	str[fd] = new_str(str[fd], tmp);
 	return (1);
 }
+

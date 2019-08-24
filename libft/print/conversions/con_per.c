@@ -6,7 +6,7 @@
 /*   By: elhampto <elhampto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 00:42:18 by elhampto          #+#    #+#             */
-/*   Updated: 2019/08/06 23:16:22 by elhampto         ###   ########.fr       */
+/*   Updated: 2019/08/24 05:03:16 by elhampto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,7 @@ void				con_per(t_flags *fl, t_val *val)
 	*com = '%';
 	if (fl->width)
 	{
-		tmp = ft_strcpy(tmp, com);
-		free(com);
+		tmp = free_copy(com, tmp);
 		com = wid_zer_min(fl->width, tmp, fl);
 	}
 	val->k += ft_intputstr(com);

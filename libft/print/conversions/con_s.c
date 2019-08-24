@@ -6,7 +6,7 @@
 /*   By: elhampto <elhampto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 00:28:36 by elhampto          #+#    #+#             */
-/*   Updated: 2019/08/06 23:16:41 by elhampto         ###   ########.fr       */
+/*   Updated: 2019/08/24 05:03:31 by elhampto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,12 +92,12 @@ void				con_s(va_list options, t_flags *fl, t_val *val)
 		com = ft_strdup("(null)");
 	if (fl->precis || fl->precis == -1)
 	{
-		tmp = freeing(com, tmp);
+		tmp = free_copy(com, tmp);
 		com = precision_s(fl->precis, tmp);
 	}
 	if (fl->width)
 	{
-		tmp = freeing(com, tmp);
+		tmp = free_copy(com, tmp);
 		com = wid_zer_min_s(fl->width, tmp, fl);
 	}
 	val->k += ft_intputstr(com);

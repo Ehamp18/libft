@@ -6,7 +6,7 @@
 /*   By: elhampto <elhampto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 00:27:51 by elhampto          #+#    #+#             */
-/*   Updated: 2019/08/06 23:15:08 by elhampto         ###   ########.fr       */
+/*   Updated: 2019/08/24 05:02:18 by elhampto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void				con_c(va_list options, t_flags *fl, t_val *val)
 	c = fl->length == 108 ? va_arg(options, wint_t) : va_arg(options, int);
 	if (fl->width)
 	{
-		FREE(((tmp = ft_strcpy(tmp, com))), com);
+		tmp = free_copy(com, tmp);
 		com = wid_zer_min_c(fl->width, tmp, fl);
 		printing(com, c, fl);
 	}

@@ -6,7 +6,7 @@
 /*   By: elhampto <elhampto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 00:28:30 by elhampto          #+#    #+#             */
-/*   Updated: 2019/08/12 23:01:36 by elhampto         ###   ########.fr       */
+/*   Updated: 2019/08/24 05:04:39 by elhampto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,15 +100,15 @@ void				con_p(va_list options, t_flags *fl, t_val *val)
 	com = ft_itoa_u_p(va_arg(options, intptr_t));
 	if (fl->precis)
 	{
-		FREE(((tmp = ft_strcpy(tmp, com))), com);
+		tmp = free_copy(com, tmp);
 		com = precision_p(fl->precis, tmp);
 	}
 	if (fl->width)
 	{
-		FREE(((tmp = ft_strcpy(tmp, com))), com);
+		tmp = free_copy(com, tmp);
 		com = wid_zer_min_p(fl->width, tmp, fl);
 	}
-	tmp = freeing(com, tmp);
+	tmp = free_copy(com, tmp);
 	com = ft_ccstrjoini('0', 'x', tmp);
 	val->k += ft_intputstr(com);
 	just_free(com, tmp);

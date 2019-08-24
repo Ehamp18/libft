@@ -6,7 +6,7 @@
 /*   By: elhampto <elhampto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 19:52:49 by elhampto          #+#    #+#             */
-/*   Updated: 2019/08/12 22:54:04 by elhampto         ###   ########.fr       */
+/*   Updated: 2019/08/24 05:01:08 by elhampto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,6 @@ char			*plus_help(t_flags *flag, char *a, t_val *val);
 char			*per_help(char *point, int perc, t_val *val);
 char			*min_help(char *s, char *ans, t_flags *flag, t_val *val);
 char			*min_help2(char *s, char *ans, t_flags *flag, t_val *val);
-char			*freeing(char *com, char *tmp);
 void			just_free(char *com, char *tmp);
 
 #endif

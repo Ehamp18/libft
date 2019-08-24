@@ -6,7 +6,7 @@
 /*   By: elhampto <elhampto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 00:50:06 by elhampto          #+#    #+#             */
-/*   Updated: 2019/08/13 15:36:10 by elhampto         ###   ########.fr       */
+/*   Updated: 2019/08/24 05:01:53 by elhampto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,12 +92,12 @@ void				con_b(va_list options, t_flags *fl, t_val *val)
 		va_arg(options, uint64_t) : va_arg(options, uint32_t));
 	if (fl->precis || fl->precis == -1)
 	{
-		tmp = freeing(com, tmp);
+		tmp = free_copy(com, tmp);
 		com = precision_b(fl->precis, tmp);
 	}
 	if (fl->width)
 	{
-		tmp = freeing(com, tmp);
+		tmp = free_copy(com, tmp);
 		com = wid_zer_min_b(fl->width, tmp, fl);
 	}
 	val->k += ft_intputstr(com);

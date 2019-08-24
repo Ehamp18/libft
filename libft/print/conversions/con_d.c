@@ -6,7 +6,7 @@
 /*   By: elhampto <elhampto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 00:27:38 by elhampto          #+#    #+#             */
-/*   Updated: 2019/08/06 23:15:27 by elhampto         ###   ########.fr       */
+/*   Updated: 2019/08/24 05:02:37 by elhampto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,17 +119,17 @@ void				con_d(va_list options, t_flags *fl, t_val *val)
 	ONE(ft_atoi(com) < 0, val->zero);
 	if (fl->precis || fl->precis == -1)
 	{
-		tmp = freeing(com, tmp);
+		tmp = free_copy(com, tmp);
 		com = precision_d(fl->precis, tmp, val);
 	}
 	if (fl->width)
 	{
-		tmp = freeing(com, tmp);
+		tmp = free_copy(com, tmp);
 		com = wid_zer_min_d(fl->width, tmp, fl, val);
 	}
 	if (fl->space || fl->plus)
 	{
-		tmp = freeing(com, tmp);
+		tmp = free_copy(com, tmp);
 		com = spac_plus_d(tmp, fl, val);
 	}
 	val->k += ft_intputstr(com);

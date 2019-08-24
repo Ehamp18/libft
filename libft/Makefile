@@ -6,7 +6,7 @@
 #    By: elhampto <elhampto@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/27 17:30:33 by elhampto          #+#    #+#              #
-#    Updated: 2019/08/12 21:24:45 by elhampto         ###   ########.fr        #
+#    Updated: 2019/08/24 05:00:08 by elhampto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ PRINT = checks \
 
 LIB = ft_atoi ft_bzero ft_ccstrjoin ft_ccstrjoini ft_cstrjoin ft_cstrjoini \
 	ft_isalpha ft_isdigit ft_isalnum ft_isascii ft_isprint ft_is_space \
-	ft_intputstr \
+	ft_intputstr free_copy\
 	ft_isint ft_itoa ft_itoa_b ft_itoa_base ft_itoa_base_unsigned ft_itoa_cx \
 	ft_itoa_unsigned ft_itoa_x ft_itoa_o_unsigned ft_itoa_u_p ft_is_upper \
 	ft_is_lower ft_lstnew ft_lstdelone ft_lstdel ft_lstadd ft_lstiter \

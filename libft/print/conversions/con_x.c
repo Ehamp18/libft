@@ -6,7 +6,7 @@
 /*   By: elhampto <elhampto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 00:28:45 by elhampto          #+#    #+#             */
-/*   Updated: 2019/08/12 22:57:55 by elhampto         ###   ########.fr       */
+/*   Updated: 2019/08/24 05:05:48 by elhampto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ static char			*wid_zer_min_x(int wid, char *s, t_flags *fl)
 	if (fl->hash)
 	{
 		tmp = ft_strnew(sizeof(char));
-		tmp = freeing(ans, tmp);
+		tmp = free_copy(ans, tmp);
 		FREE(((ans = hash_x(tmp))), tmp);
 	}
 	return (ans);
@@ -108,17 +108,17 @@ void				con_x(va_list options, t_flags *fl, t_val *val)
 		va_arg(options, uint64_t) : va_arg(options, uint32_t));
 	if (fl->precis || fl->precis == -1)
 	{
-		tmp = freeing(com, tmp);
+		tmp = free_copy(com, tmp);
 		com = precision_x(fl->precis, tmp);
 	}
 	if (fl->width)
 	{
-		tmp = freeing(com, tmp);
+		tmp = free_copy(com, tmp);
 		com = wid_zer_min_x(fl->width, tmp, fl);
 	}
 	if (fl->hash && !fl->width)
 	{
-		tmp = freeing(com, tmp);
+		tmp = free_copy(com, tmp);
 		com = hash_x(tmp);
 	}
 	val->k += ft_intputstr(com);
